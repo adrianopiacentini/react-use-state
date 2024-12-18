@@ -1,33 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import lang from './data/lang'
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedLang, setSelectedLang] = useState(lang[0])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="container my-5">
+        { }
+        <div>
+          {lang.map(curLang => (
+            <button onClick= {() => {setSelectedLang(curLang)}} key={curLang.id} className="btn btn-primary me-2">{curLang.title}</button>
+          ))}
+        </div>
+        <div className="card mt-4 w-50">
+          <div className="card-body">
+            <h3>{selectedLang.title}</h3>
+            <p>{selectedLang.description}</p>
+          </div>
+
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
